@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: grpc-cli-ingress
+spec:
+  rules:
+  - host: grpc.airimagefind.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: grpc-cli
+            port:
+              number: 80

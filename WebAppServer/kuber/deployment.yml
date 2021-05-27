@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grpc-server-deployment
+spec:
+  replicas: 1  
+  selector:
+    matchLabels:
+      app: grpc-server
+  template:
+    metadata:
+      labels:
+        app: grpc-server
+    spec:
+      containers:
+      - name: grpc-server-instance
+        image: hv86/grpc-server:1.0.1
+        resources:
+          limits:
+            memory: "256Mi"
+        ports:
+        - containerPort: 80
